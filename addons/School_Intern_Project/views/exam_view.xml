@@ -11,11 +11,7 @@
                             <field name="subject_id" />
                         </group>
                         <group>
-                            <field name="student_id" />
-                        </group>
-                        <group>
-                            <!-- <field name="session" /> -->
-                            <field name="roll_no" />
+                            <field name="stu_name" domain = "[('status', '=', 'Pass')]" />
                         </group>
                     </group>
                     <notebook>

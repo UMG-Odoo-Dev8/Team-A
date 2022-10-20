@@ -13,7 +13,7 @@ class CalculatePercent(models.Model):
     leave = fields.Float(string = 'Leave')
     attendance_count = fields.Float(string = 'Attendance_Count', compute = '_compute_total')
     total_percent = fields.Float(string = 'Total Percent', compute = '_compute_total_per')
-    status = fields.Char(string = 'Status', readonly=True)
+    status = fields.Char(string = 'Status')
 
     @api.onchange('stu_name')
     def _onchange_percent(self):

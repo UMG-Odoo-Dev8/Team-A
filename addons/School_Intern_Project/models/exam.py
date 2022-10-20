@@ -8,9 +8,7 @@ class SchoolExam(models.Model):
    
     
     # student_id=fields.Many2one('section.line.model', string="Student Name")
-    student_id=fields.Char()
-    roll_no=fields.Many2one('create.session', string="Roll No")
-    session=fields.Char(string="Section",  readonly=True)
+    stu_name=fields.Many2one('calculate.percent', string="Student Name")
 
     subject_id = fields.Many2one('question.model', string='Subject')
 
@@ -20,14 +18,6 @@ class SchoolExam(models.Model):
     # exam_marks=fields.Integer() #second test
     exam_mark=fields.Char()
     
-    
-    @api.onchange('roll_no')
-    def onchange_roll_no(self):
-        if self.roll_no:
-            self.session= self.roll_no.session_id.session_name
-            self.student_id=self.roll_no.student_id.student_id
-    
-
     @api.onchange('subject_id')
     def onchange_subject_id(self):
         # global answer_list

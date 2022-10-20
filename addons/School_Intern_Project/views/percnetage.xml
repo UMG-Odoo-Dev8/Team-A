@@ -14,4 +14,40 @@
         parent="teachers_students_root_menu"
         sequence="10"/>
 
+    <record id="calculate_percent_view_form" model="ir.ui.view">
+        <field name="name">calculate_percent.view.form</field>
+        <field name="model">calculate.percent</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="stu_name" />
+                        <field name="full_day" />
+                        <field name="half_day" />
+                        <field name="leave" />
+                        <field name="attendance_count" />
+                        <field name="total_percent" />
+                        <field name="status" readonly = '1' force_save='1'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="calculate_percent_view_tree" model="ir.ui.view">
+        <field name="name">calculate_percent.view.tree</field>
+        <field name="model">calculate.percent</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="stu_name" optional = 'show'/>
+                <field name="full_day" optional = 'show'/>
+                <field name="half_day" optional = 'show'/>
+                <field name="leave" optional = 'hide'/>
+                <field name="attendance_count" optional = 'hide'/>
+                <field name="total_percent" optional = 'show'/>
+                <field name="status" optional = 'show'/>
+            </tree>
+        </field>
+    </record>
+
 </odoo>
