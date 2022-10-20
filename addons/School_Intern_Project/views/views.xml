@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="teachers_stusents_action" model="ir.actions.act_window">
+        <field name="name">List of School Info</field>
+        <field name="res_model">teachers.students</field>
+        <field name="view_mode">tree,form,pivot,kanban,graph,calendar</field>
+    </record>
+
+    <menuitem
+        id="teachers_students_root_menu"
+        name="School_Intern_Project"
+        sequence="10"/>
+        <menuitem
+            id="teachers_students_sub_menu"
+            name="Info"
+            action="teachers_stusents_action"
+            parent="teachers_students_root_menu"
+            sequence="10"/>
+
+    <record id="teachers_students_view_form" model="ir.ui.view">
+        <field name="name">teachers_students.view.form</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <form string="Please to Enter Data">
+                <header>
+                    <button string="Student" name="my_fun" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="teacher,teacher_head,student" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="date_of_birth" />
+                            <field name="gender" />
+                            <field name="avator" widget = "image" class = "oe_avator" />
+                        </group>
+                        <group>
+                            <field name="father_name" />
+                            <!-- <field name="age" /> -->
+                            <field name="degree" attrs="{'invisible': [('state', '=', 'student')]}"/>
+                            <field name="email" attrs="{'invisible': [('state', '=', 'student')]}"/>
+                            <field name="subjects" attrs="{'invisible': [('state', '=', 'student')]}"/>
+                            <field name="address" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_tree" model="ir.ui.view">
+        <field name="name">teachers_students.view.tree</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" optional = "show"/>
+                <field name="date_of_birth" optional = "show"/>
+                <!-- <field name="age" optional = "show"/> -->
+                <field name="gender" optional = "show"/>
+                <field name="avator" optional = "show" widget = "image" class = "oe_avatar"/>
+                <field name="father_name" optional = "hide"/>
+                <field name="state" optional = "show"/>
+                <field name="degree" optional = "show"/>
+                <field name="email" optional = "show"/>
+                <field name="address" optional = "show"/>
+                <field name="subjects" optional = "show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_search" model="ir.ui.view">
+        <field name="name">teachers_students.view.search</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name" filter_domain="['|', '|', ('name','ilike',self), ('father_name','ilike',self), ('gender','ilike',self)]" string="Search"/>
+                <field name="father_name" />
+                <field name="gender" />
+                <filter name="name" string="Gender" domain="[('gender', '=', 'female')]" />
+                <group name="state" string="Group By">
+                    <filter name="state" string="state" domain="[]" context="{'group_by': 'state'}" />
+                </group>
+                <searchpanel>
+                    <field name="state" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_pivot" model="ir.ui.view">
+        <field name="name">teachers_students.view.pivot</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <pivot string="" disable_linking="true">
+                <!-- <field name="name" type = "row" /> -->
+                <field name="gender" type = "row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_kanban" model="ir.ui.view">
+        <field name="name">teachers_students.view.kanban</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="col-md-3">
+
+                            <div class="o_kanban_image">
+
+                                <field name="avator" nolabel = "1" widget = "image" class = "oe_avatar" />
+
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_graph" model="ir.ui.view">
+        <field name="name">teachers_students.view.graph</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <!-- bar,piechart,line -->
+            <graph string="" type="line"> 
+                <field name="name"/>
+                <field name="avator" />
+                <field name="father_name" />
+                <field name="gender"/>
+                <field name="state"/>
+                <field name="degree"/>
+                <field name="email"/>
+                <field name="address"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="teachers_students_view_calendar" model="ir.ui.view">
+        <field name="name">teachers_students.view.calendar</field>
+        <field name="model">teachers.students</field>
+        <field name="arch" type="xml">
+            <calendar string="" date_start="date_of_birth" color="name">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_teachers_students,teachers_students,model_teachers_students,,1,1,1,1
+access_subject_managemnet,subject_management,model_subject_management,,1,1,1,1
+access_school_session,school_session,model_school_session,,1,1,1,1
+access_create_session,create_session,model_create_session,,1,1,1,1
+access_attendance_students,attendance_students,model_attendance_students,,1,1,1,1
+access_leave_students,leave_students,model_leave_students,,1,1,1,1
+access_calculate_percent,calculate_percent,model_calculate_percent,,1,1,1,1

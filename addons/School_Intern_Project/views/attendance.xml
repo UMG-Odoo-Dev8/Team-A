@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="attendance_students_action" model="ir.actions.act_window">
+        <field name="name">Attendance List</field>
+        <field name="res_model">attendance.students</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="attendance_sub_menu"
+        name="Attendance"
+        action="attendance_students_action"
+        parent="teachers_students_root_menu"
+        sequence="10"/>
+
+    <record id="attendance_students_view_form" model="ir.ui.view">
+        <field name="name">attendance_students.view.form</field>
+        <field name="model">attendance.students</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <button string="Hello" name="my_fun" type="object" class="oe_highlight"/>
+                <sheet>
+                    <group>
+                        <field name="roll_no" required = 'True'/>
+                        <field name="student_id" />
+                        <field name="sections" />
+                        <field name="months"/>
+                        <field name="check_in" required = 'True'/>
+                        <field name="check_out" />
+                        <field name="attendance_hours" />
+                        <field name="percentage" />
+                        <field name="total_percent" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="attendance_students_view_tree" model="ir.ui.view">
+        <field name="name">attendance_students.view.tree</field>
+        <field name="model">attendance.students</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="student_id" optional = "show"/>
+                <field name="roll_no" optional = "show"/>
+                <field name="sections" optional = "show"/>
+                <field name="months" optional = "show"/>
+                <field name="check_in" optional = "show"/>
+                <field name="check_out" optional = "show"/>
+                <field name="attendance_hours" optional = "show"/>
+                <field name="percentage" optional = "show"/>
+                <field name="total_percent" optional = "show"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="attendance_students_view_filter" model="ir.ui.view">
+        <field name="name">attendance_students_view_filter</field>
+        <field name="model">attendance.students</field>
+        <field name="arch" type="xml">
+            <search string="Students Attendance Search">
+                <field name="student_id"/>
+                <field name="roll_no" operator="child_of"/>
+                <separator/>
+                <filter string="Check In" name="check_in_filter" date="check_in" default_period="last_month"/>
+                <filter string="No Check Out" name="nocheckout" domain="[('check_out', '=', False)]" />
+                <group expand="0" string="Group By">
+                    <filter string="Employee" name="employee" context="{'group_by': 'student_id'}"/>
+                    <filter string="Check In" name="groupby_name" context="{'group_by': 'check_in'}"/>
+                    <filter string="Check Out" name="groupby_check_out" context="{'group_by': 'check_out'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
