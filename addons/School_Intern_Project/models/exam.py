@@ -16,20 +16,14 @@ class SchoolExam(models.Model):
     # total_mark=fields.Char() #first test
     status=fields.Char()
     # exam_marks=fields.Integer() #second test
-    exam_mark=fields.Char()
+    exam_mark=fields.Integer()
     
     @api.onchange('subject_id')
     def onchange_subject_id(self):
-        # global answer_list
-        # answer_list=[]
         self.exam_ids=[(5,0,0)]
         questions = self.env['question.model.line'].search([])
-        # print(subject_id)
         if questions:
             for ques in questions:
-                # print(".....",subj)
-                # print(".....",subj.question_text)
-                # print(".....",subj.answer)
                 if self.subject_id.subject==ques.question_id.subject:
                     vals = {
                     'question_text': ques.question_text,
@@ -39,18 +33,33 @@ class SchoolExam(models.Model):
                     self.update({'exam_ids':[(0, 0, vals)]})
 
     #Update Total Marks
+    # def exam_result(self):
+    #     # question_count=0
+    #     mark=0
+    #     for result in self.exam_ids:
+    #         # question_count +=1
+    #         if result.answer==result.exam_answer:
+    #             mark +=1
+    #     self.exam_mark=mark 
+    #     # if(mark>=math.ceil(question_count/2)):
+    #     #     self.status='Pass'
+    #     # else:
+    #     #     self.status='Fail'
+
     def exam_result(self):
-        question_count=0
-        mark=0
-        for exam_id in self.exam_ids:
-            question_count +=1
-            if exam_id.answer==exam_id.exam_answer:
-                mark +=1
-        self.exam_mark=mark 
-        if(mark>=math.ceil(question_count/2)):
-            self.status='Pass'
-        else:
-            self.status='Fail'
+        mark = 0
+        for ans in self:
+            if ans.exam_ids:
+                for result in ans.exam_ids:
+                    if result.answer == result.exam_answer:
+                        mark += 1
+                    else:
+                        mark = mark
+            else:
+                print('Hay! No question. Pls Try again')
+        self.exam_mark = mark
+
+    
 
 
 class SchoolExamLine(models.Model):
@@ -60,6 +69,6 @@ class SchoolExamLine(models.Model):
     exam_id=fields.Many2one('school.exam')
 
     question_text=fields.Text()
-    answer=fields.Char()
-    exam_answer=fields.Selection([('true','True'),('false','False')], "Answer")
+    answer = fields.Char()
+    exam_answer=fields.Selection([('true','True'),('false','False')], "Exam_Answer")
     score=fields.Integer()

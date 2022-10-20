@@ -4,7 +4,7 @@ from odoo import models,fields
 class QuestionModel(models.Model):
     _name= "question.model"
     _description="Question"
-    # _rec_name="subject"
+    _rec_name="subject"
 
     subject=fields.Many2one('subject.management',string="Subject")
     question_ids = fields.One2many('question.model.line', 'question_id', string='Questions')
