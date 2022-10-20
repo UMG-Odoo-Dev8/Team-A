@@ -4,5 +4,5 @@ from . import school_session
 from . import attendance_students
 from . import leave_students
 from . import calculate_percent
-# from . import exam_info
-# from . import exam_scores
+from . import exam
+from . import question

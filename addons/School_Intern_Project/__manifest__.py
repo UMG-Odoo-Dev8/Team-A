@@ -10,5 +10,7 @@
         'views/attendance.xml',
         'views/leave.xml',
         'views/percnetage.xml',
+        'views/exam_view.xml',
+        'views/question_view.xml',
     ]
 }

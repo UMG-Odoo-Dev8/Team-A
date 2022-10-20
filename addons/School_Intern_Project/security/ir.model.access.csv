@@ -6,3 +6,7 @@ access_create_session,create_session,model_create_session,,1,1,1,1
 access_attendance_students,attendance_students,model_attendance_students,,1,1,1,1
 access_leave_students,leave_students,model_leave_students,,1,1,1,1
 access_calculate_percent,calculate_percent,model_calculate_percent,,1,1,1,1
+access_school_exam,school_exam,model_school_exam,,1,1,1,1
+access_question_model,question_model,model_question_model,,1,1,1,1
+access_school_exam_line,school_exam_line,model_school_exam_line,,1,1,1,1
+access_question_model_line,question_model_line,model_question_model_line,,1,1,1,1
