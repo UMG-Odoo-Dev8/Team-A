@@ -9,6 +9,7 @@ class CalculatePercent(models.Model):
     _rec_name = 'stu_name'
 
     stu_name = fields.Many2one('teachers.students', string = 'Student Name')
+    check_month = fields.Char(string = 'Month')
     full_day = fields.Float(string = 'Full_Day')
     half_day = fields.Float(string = 'Half_day')
     leave = fields.Float(string = 'Leave')
@@ -16,13 +17,14 @@ class CalculatePercent(models.Model):
     total_percent = fields.Float(string = 'Total Percent', compute = '_compute_total_per')
     status = fields.Char(string = 'Status')
 
-    @api.onchange('stu_name')
+    @api.onchange('stu_name', 'check_month')
     def _onchange_percent(self):
         if self.stu_name:
+            month = self.check_month
             name = self.stu_name.name
-            self.full_day = self.env['attendance.students'].search_count(['&', ('student_id', '=', name), ('percentage', '=', 1.0)])
-            self.half_day = self.env['attendance.students'].search_count(['&',('student_id', '=', name),('percentage', '=', 0.5)])
-            self.leave = self.env['leave.students'].search_count([('student_id', '=', name)])
+            self.full_day = self.env['attendance.students'].search_count(['&', '&', ('student_id', '=', name), ('today_month', '=', month), ('percentage', '=', 1.0)])
+            self.half_day = self.env['attendance.students'].search_count(['&', '&', ('student_id', '=', name), ('today_month', '=', month), ('percentage', '=', 0.5)])
+            self.leave = self.env['leave.students'].search_count(['&', ('student_id', '=', name), ('leave_month', '=', month)])
 
     
     @api.depends("full_day", "half_day")

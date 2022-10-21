@@ -25,7 +25,7 @@
                         <field name="roll_no" required = 'True'/>
                         <field name="student_id" />
                         <field name="sections" />
-                        <field name="months"/>
+                        <field name="today_month" />
                         <field name="check_in" required = 'True'/>
                         <field name="check_out" />
                         <field name="attendance_hours" />
@@ -45,7 +45,7 @@
                 <field name="student_id" optional = "show"/>
                 <field name="roll_no" optional = "show"/>
                 <field name="sections" optional = "show"/>
-                <field name="months" optional = "show"/>
+                <field name="today_month" optional = "show"/>
                 <field name="check_in" optional = "show"/>
                 <field name="check_out" optional = "show"/>
                 <field name="attendance_hours" optional = "show"/>
