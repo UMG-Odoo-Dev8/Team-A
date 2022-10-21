@@ -30,7 +30,7 @@
                             <field name="student_ids">
                                 <tree editable="bottom">
                                     <field name="student_id" domain = "[('state', '=', 'student')]" />
-                                    <field name="session_id"/>
+                                    <field name="session_id" invisible = '1'/>
                                     <field name="roll_no"/>
                                 </tree>
                             </field>
@@ -46,10 +46,10 @@
         <field name="model">school.session</field>
         <field name="arch" type="xml">
             <tree string="">
-                <field name="session_name" />
-                <field name="t_head" />
-                <field name="teacher" />
-                <field name="student_ids" />
+                <field name="session_name" required = '1'/>
+                <field name="t_head" required = '1'/>
+                <field name="teacher" required = '1'/>
+                <field name="student_ids" required = '1'/>
             </tree>
         </field>
     </record>

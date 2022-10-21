@@ -66,5 +66,5 @@ class Attendance(models.Model):
                 print('Hello')
         self.total_percent = total_per
 
-    def my_fun(self):
-        pass
+    # def my_fun(self):
+    #     pass

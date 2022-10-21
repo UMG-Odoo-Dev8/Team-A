@@ -12,5 +12,6 @@
         'views/percnetage.xml',
         'views/exam_view.xml',
         'views/question_view.xml',
+        'views/exam_result.xml',
     ]
 }

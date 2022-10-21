@@ -6,3 +6,4 @@ from . import leave_students
 from . import calculate_percent
 from . import exam
 from . import question
+from . import exam_result

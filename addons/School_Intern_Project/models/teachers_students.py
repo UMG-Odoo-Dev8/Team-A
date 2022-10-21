@@ -26,5 +26,5 @@ class SchoolInfo(models.Model):
     active = fields.Boolean(string = "Active", default = "True")
     subjects = fields.Many2one('subject.management', string = "Subjects")
 
-    def my_fun(self):
-        self.state = 'teacher'
+    # def my_fun(self):
+    #     self.state = 'teacher'

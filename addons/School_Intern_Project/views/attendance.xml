@@ -19,7 +19,7 @@
         <field name="model">attendance.students</field>
         <field name="arch" type="xml">
             <form string="">
-                <button string="Hello" name="my_fun" type="object" class="oe_highlight"/>
+                <!-- <button string="Hello" name="my_fun" type="object" class="oe_highlight"/> -->
                 <sheet>
                     <group>
                         <field name="roll_no" required = 'True'/>

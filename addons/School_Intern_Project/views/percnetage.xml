@@ -21,7 +21,7 @@
             <form string="">
                 <sheet>
                     <group>
-                        <field name="stu_name" />
+                        <field name="stu_name" domain = "[('state', '=', 'student')]"/>
                         <field name="full_day" />
                         <field name="half_day" />
                         <field name="leave" />

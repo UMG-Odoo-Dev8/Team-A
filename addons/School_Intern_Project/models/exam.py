@@ -5,6 +5,7 @@ from odoo import models,fields,api
 class SchoolExam(models.Model):
     _name= "school.exam"
     _description="Exam"
+    _rec_name = 'stu_name'
    
     
     # student_id=fields.Many2one('section.line.model', string="Student Name")
@@ -52,12 +53,20 @@ class SchoolExam(models.Model):
             if ans.exam_ids:
                 for result in ans.exam_ids:
                     if result.answer == result.exam_answer:
-                        mark += 1
+                        mark += result.score    
                     else:
                         mark = mark
             else:
                 print('Hay! No question. Pls Try again')
         self.exam_mark = mark
+        if(mark <= 39):
+            self.status = 'Fail'
+        elif(mark <= 79):
+            self.status = 'Pass'
+        elif(mark <= 99):
+            self.status = 'Distinction'
+        else:
+            self.status = 'Perfect'
 
     
 

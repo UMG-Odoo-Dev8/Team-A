@@ -24,7 +24,7 @@
         <field name="arch" type="xml">
             <form string="Please to Enter Data">
                 <header>
-                    <button string="Student" name="my_fun" type="object" class="oe_highlight"/>
+                    <!-- <button string="Student" name="my_fun" type="object" class="oe_highlight"/> -->
                     <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="teacher,teacher_head,student" />
                 </header>
                 <sheet>

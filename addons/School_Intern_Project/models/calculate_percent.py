@@ -6,6 +6,7 @@ from odoo import fields, models, api
 class CalculatePercent(models.Model):
     _name = 'calculate.percent'
     _description = 'Calculate Percentage'
+    _rec_name = 'stu_name'
 
     stu_name = fields.Many2one('teachers.students', string = 'Student Name')
     full_day = fields.Float(string = 'Full_Day')
