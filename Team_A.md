@@ -21,7 +21,7 @@
     - [Test Exam and Generate Result](#test-exam-and-generate-result)
 
 ## Projcet Overview
-School management system is very convient for checking students' roll-call percentage and also useful  for saving attendance records for each student and test exams.<br>
+School management system is very convient for checking students' roll-call percentage and also useful  for saving attendance records for each student and for testing exams.<br>
     Functions of the system:
 - Manage attendance
 - Test Exam
@@ -55,6 +55,9 @@ Create new Teacher
 Create new Teacher Head
 ![create data](./images/teacher_head.png)
 
+Can see same role in a collection by chosing this options
+![create data](./images/search_panel.png)
+
 
 ### Add Data into Sections
 After creating needed data, you can add these data into sections. A section can have one teacher head, many teachers and many students. You need to define students' roll numbers and keep in mind to define like A1(Section A's roll-1), A2, B1(Section B's roll-1),B2 
@@ -66,17 +69,20 @@ After creating needed data, you can add these data into sections. A section can 
 ### Create Attendance
 Click on ***Attendance*** menuitem and create new attendance record for each student
 ![attendance](./images/attendance.png)
-![attendance](./images/attendance_one.png)
+Need to add today's month.
+![attendance](./images/attendance_record.png)
 
 ### Request Leave
 To request leave go to ***Leave*** menuitem. Can choose leave type,can define wanted durations by  selecting start date and end date.
 ![leave](./images/leave.png)
-![leave](./images/leave_request.png)
+Add today's month.
+![leave](./images/leave_req.png)
 
 ### View Roll call Percentage
 To See roll call percentage of each student, go to ***Total Percent*** menu.And then, by selecting student's name, can view that student's attendance record and roll call percent.
 ![total precent](./images/total_percent.png)
-![total precent](.images/total_percent_for_one.png)
+Insert today's month
+![total precent](./images/total_percent_for_one.png)
 
 ### Create Exam Questions
 Go to ***Quizz***  menu and write questions and define correct answers. Can also define scores for each questions and can hide some questions that do not want to show in exam form view by removing check mark  in the active column .
