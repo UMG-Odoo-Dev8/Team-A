@@ -9,7 +9,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="subject" />
+                            <field name="subject" string="Course"/>
                         </group>
                     </group>    
                     <notebook>
@@ -19,7 +19,7 @@
                                     <field name="question_text"/>
                                     <field name="answer" />
                                     <field name="score" />
-                                    <field name="active" />
+                                    <field name="q_active" />
                                 </tree>
                                 <form>
                                     <group>
@@ -33,7 +33,7 @@
                                             <field name="score" />
                                         </group>
                                         <group>
-                                            <field name="active" />
+                                            <field name="q_active" />
                                         </group>
                                     </group>
                                 </form>
@@ -50,7 +50,7 @@
         <field name="model">question.model</field>
         <field name="arch" type="xml">
             <tree string="">
-                <field name="subject"/>
+                <field name="subject" string="Course"/>
                 <field name="question_ids"/>
             </tree>
         </field>

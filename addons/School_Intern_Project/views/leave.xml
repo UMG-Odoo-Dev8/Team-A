@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="leave_students_action" model="ir.actions.act_window">
-        <field name="name">Students leave</field>
-        <field name="res_model">leave.students</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-        id="leave_sub_menu"
-        name="Leave"
-        action="leave_students_action"
-        parent="teachers_students_root_menu"
-        sequence="10"/>
-
-    <record id="leave_students_view_form" model="ir.ui.view">
+<record id="leave_students_view_form" model="ir.ui.view">
         <field name="name">leave_students.view.form</field>
         <field name="model">leave.students</field>
         <field name="arch" type="xml">
@@ -67,4 +54,19 @@
         </field>
     </record>
 
+
+    <record id="leave_students_action" model="ir.actions.act_window">
+        <field name="name">Students leave</field>
+        <field name="res_model">leave.students</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="leave_sub_menu"
+        name="Leave"
+        action="leave_students_action"
+        parent="teachers_students_root_menu"
+        sequence="10"/>
+
+    
 </odoo>

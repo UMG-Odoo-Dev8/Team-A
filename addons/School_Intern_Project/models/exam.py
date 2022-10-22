@@ -11,7 +11,7 @@ class SchoolExam(models.Model):
     # student_id=fields.Many2one('section.line.model', string="Student Name")
     stu_name=fields.Many2one('calculate.percent', string="Student Name")
 
-    subject_id = fields.Many2one('question.model', string='Subject')
+    subject_id = fields.Many2one('question.model', string='Course')
 
     exam_ids = fields.One2many('school.exam.line', 'exam_id', string='Question', store=True)
     # total_mark=fields.Char() #first test

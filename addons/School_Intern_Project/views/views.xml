@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="teachers_stusents_action" model="ir.actions.act_window">
-        <field name="name">List of School Info</field>
-        <field name="res_model">teachers.students</field>
-        <field name="view_mode">tree,form,pivot,kanban,graph,calendar</field>
-    </record>
-
-    <menuitem
-        id="teachers_students_root_menu"
-        name="School_Intern_Project"
-        sequence="10"/>
-        <menuitem
-            id="teachers_students_sub_menu"
-            name="Info"
-            action="teachers_stusents_action"
-            parent="teachers_students_root_menu"
-            sequence="10"/>
-
-    <record id="teachers_students_view_form" model="ir.ui.view">
+   <record id="teachers_students_view_form" model="ir.ui.view">
         <field name="name">teachers_students.view.form</field>
         <field name="model">teachers.students</field>
         <field name="arch" type="xml">
@@ -148,5 +131,22 @@
             </calendar>
         </field>
     </record>
+
+     <record id="teachers_stusents_action" model="ir.actions.act_window">
+        <field name="name">List of School Info</field>
+        <field name="res_model">teachers.students</field>
+        <field name="view_mode">tree,form,pivot,kanban,graph,calendar</field>
+    </record>
+
+    <menuitem
+        id="teachers_students_root_menu"
+        name="School"
+        sequence="10"/>
+        <menuitem
+            id="teachers_students_sub_menu"
+            name="Profile"
+            action="teachers_stusents_action"
+            parent="teachers_students_root_menu"
+            sequence="10"/>
 
 </odoo>

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="subject_management_action" model="ir.actions.act_window">
-        <field name="name">List of Subject</field>
-        <field name="res_model">subject.management</field>
-        <field name="view_mode">tree,form,kanban,pivot</field>
-    </record>
-
-    <menuitem
-        id="subject_management_sub_menu"
-        name="Subjects"
-        action="subject_management_action"
-        parent="teachers_students_root_menu"
-        sequence="10"/>
-    
     <record id="subject_management_view_form" model="ir.ui.view">
         <field name="name">subject_management.view.form</field>
         <field name="model">subject.management</field>
@@ -21,10 +8,10 @@
             <form string="">
                 <sheet>
                     <group>
-                        <field name="subjects" />
-                        <field name="chapter" />
-                        <field name="start_date" />
-                        <field name="end_date" />
+                        <field name="subjects" string = 'Course' />
+                        <field name="chapter" string="Content"/>
+                        <field name="start_date" string="Start Date" />
+                        <field name="end_date" string="End Date"/>
                     </group>
                 </sheet>
             </form>
@@ -53,10 +40,10 @@
                     <t t-name="kanban-box">
                         <div>
                             <ul>
-                                <li>Subject :<field name="subjects" string = 'Subject : '/></li>
-                                <li>Chapter :<field name="chapter" string = 'Chapter : '/></li>
-                                <li>Start_Date :<field name="start_date" string = 'Start_Date : '/></li>
-                                <li>End_Date :<field name="end_date" string = 'End_Date : '/></li>
+                                <li>Course :<field name="subjects" string = 'Course : '/></li>
+                                <li>Content :<field name="chapter" string = 'Content : '/></li>
+                                <li>Start Date :<field name="start_date" string = 'Start Date : '/></li>
+                                <li>End Date :<field name="end_date" string = 'End Date : '/></li>
                             </ul>
                         </div>
                     </t>
@@ -74,5 +61,18 @@
             </pivot>
         </field>
     </record>
+
+    <record id="subject_management_action" model="ir.actions.act_window">
+        <field name="name">Academic Course</field>
+        <field name="res_model">subject.management</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+    </record>
+
+    <menuitem
+        id="subject_management_sub_menu"
+        name="Course"
+        action="subject_management_action"
+        parent="teachers_students_root_menu"
+        sequence="10"/>
 
 </odoo>

@@ -9,7 +9,7 @@ class Attendance(models.Model):
     _name = 'attendance.students'
     _description = 'Checking Attendance'
 
-    roll_no = fields.Many2one('create.session', string="Roll_NO", required=True, ondelete='cascade', index=True)
+    roll_no = fields.Many2one('create.session', string="Roll No", required=True, ondelete='cascade', index=True)
     student_id = fields.Char(string = 'Name')
     today_month = fields.Char()
     check_in = fields.Datetime(string="Check In", default=fields.Datetime.now, required=True)

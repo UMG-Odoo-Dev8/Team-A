@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="school_session_action" model="ir.actions.act_window">
-        <field name="name">Session List</field>
-        <field name="res_model">school.session</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-        id="exam_scores_sub_menu"
-        name="Session"
-        action="school_session_action"
-        parent="teachers_students_root_menu"
-        sequence="10"/>
-
     <record id="school_session_view_form" model="ir.ui.view">
         <field name="name">school_session.view.form</field>
         <field name="model">school.session</field>
@@ -31,7 +18,7 @@
                                 <tree editable="bottom">
                                     <field name="student_id" domain = "[('state', '=', 'student')]" />
                                     <field name="session_id" invisible = '1'/>
-                                    <field name="roll_no"/>
+                                    <field name="roll_no" />
                                 </tree>
                             </field>
                         </page>
@@ -41,8 +28,8 @@
         </field>
     </record>
 
-    <record id="exam_scores_view_tree" model="ir.ui.view">
-        <field name="name">exam_scores.view.tree</field>
+    <record id="school_session_view_tree" model="ir.ui.view">
+        <field name="name">school.session.view.tree</field>
         <field name="model">school.session</field>
         <field name="arch" type="xml">
             <tree string="">
@@ -63,5 +50,18 @@
             </search>
         </field>
     </record>
+
+    <record id="school_session_action" model="ir.actions.act_window">
+        <field name="name">Academic Section</field>
+        <field name="res_model">school.session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="exam_scores_sub_menu"
+        name="Section"
+        action="school_session_action"
+        parent="teachers_students_root_menu"
+        sequence="10"/>
 
 </odoo>
