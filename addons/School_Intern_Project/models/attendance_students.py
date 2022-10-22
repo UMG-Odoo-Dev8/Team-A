@@ -11,7 +11,7 @@ class Attendance(models.Model):
 
     roll_no = fields.Many2one('create.session', string="Roll_NO", required=True, ondelete='cascade', index=True)
     student_id = fields.Char(string = 'Name')
-    months = fields.Selection([('1', 'Jan'), ('2', 'Feb'), ('3', 'Mar'), ('4', 'Apr'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'Aug'), ('9', 'Sep'), ('10', 'Oct'), ('11', 'Nov'), ('12', 'Dec')])
+    today_month = fields.Char()
     check_in = fields.Datetime(string="Check In", default=fields.Datetime.now, required=True)
     check_out = fields.Datetime(string="Check Out", default=fields.Datetime.now)
     attendance_hours = fields.Float(string='Attendance Hours', compute='_compute_attendance_hours', store=True, readonly=True)

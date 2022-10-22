@@ -22,10 +22,10 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="subject_id" />
+                            <field name="subject_id" required = '1'/>
                         </group>
                         <group>
-                            <field name="stu_name" domain = "[('status', '=', 'Pass')]" />
+                            <field name="stu_name" domain = "[('status', '=', 'Pass')]" required = '1' />
                         </group>
                     </group>
                     <notebook>
@@ -33,7 +33,7 @@
                             <field name="exam_ids">
                                 <tree editable="bottom">
                                     <field name="question_text"/>
-                                    <field name="answer"/>
+                                    <field name="answer" invisible = '1'/>
                                     <field name="exam_answer"/>
                                     <field name="score"/>
                                 </tree>

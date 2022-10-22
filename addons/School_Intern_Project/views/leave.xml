@@ -25,6 +25,7 @@
                             <field name="student_id" readonly='1' force_save='1'/>
                             <field name="roll_no" />
                             <field name="sections" readonly='1' force_save='1'/>
+                            <field name="leave_month" />
                             <field name="leave_type" />
                             <div class="o_row o_row_readonly">
                                 <span class="oe_inline">
@@ -56,6 +57,7 @@
                 <field name="student_id" optional = 'show'/>
                 <field name="roll_no" optional = 'show'/>
                 <field name="sections" optional = 'show'/>
+                <field name="leave_month" optional = 'show'/>
                 <field name="request_date_from" optional = 'show'/>
                 <field name="request_date_to" optional = 'show'/>
                 <field name="number_of_days" optional = 'show'/>

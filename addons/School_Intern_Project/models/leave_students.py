@@ -10,6 +10,7 @@ class LeaveStudents(models.Model):
     roll_no = fields.Many2one('create.session', string="Roll_NO", required=True, ondelete='cascade', index=True)
     student_id = fields.Char(string = 'Name')
     sections = fields.Char(string = 'Session Name')
+    leave_month = fields.Char()
     leave_type = fields.Selection([('sick', 'Sick Leave'), ('parental', 'Parental Leave'), ('emergency', 'Emergency Leave')], string  = 'Leave Type')
     number_of_days = fields.Float(string = 'Date', store=True)
     request_date_from = fields.Date('Request Start Date')
