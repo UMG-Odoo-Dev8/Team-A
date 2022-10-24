@@ -4,7 +4,8 @@ from odoo import fields, models, api
 class SchoolSession(models.Model):
     _name = 'school.session'
     _description = 'School Session'
-    
+    _rec_name="session_name"
+
     session_name = fields.Char(string = 'Section')
     t_head = fields.Many2one('teachers.students', string = 'Teacher Head')
     teacher = fields.Many2many('teachers.students')

@@ -20,5 +20,5 @@ class QuestionModelLine(models.Model):
     question_text= fields.Text("Question")
     answer=fields.Selection([('true','True'),('false','False')], "Answer")
     score=fields.Integer()
-    q_active=fields.Boolean("Active",default="True")
+    active=fields.Boolean("Active",default="True")
     # subjects=fields.Char()

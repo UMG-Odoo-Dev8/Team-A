@@ -21,7 +21,9 @@
             <form string="">
                 <sheet>
                     <group>
-                        <field name="stu_name" domain = "[('state', '=', 'student')]"/>
+                        <field name="roll_no_id" />
+                        <field name="stu_name" />
+                        <field name="sections" />
                         <field name="check_month" />
                         <field name="full_day" />
                         <field name="half_day" />
@@ -40,7 +42,9 @@
         <field name="model">calculate.percent</field>
         <field name="arch" type="xml">
             <tree string="">
+                <field name="roll_no_id" optional = 'show'/>
                 <field name="stu_name" optional = 'show'/>
+                <field name="sections" optional = 'show'/>
                 <field name="check_month" optional = 'show'/>
                 <field name="full_day" optional = 'show'/>
                 <field name="half_day" optional = 'show'/>

@@ -58,10 +58,10 @@
     </record>
 
     <menuitem
-        id="exam_scores_sub_menu"
+        id="school_section_sub_menu"
         name="Section"
         action="school_session_action"
         parent="teachers_students_root_menu"
-        sequence="10"/>
+        sequence="8"/>
 
 </odoo>

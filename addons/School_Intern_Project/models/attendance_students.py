@@ -8,6 +8,7 @@ from odoo import fields, models, api, exceptions, _
 class Attendance(models.Model):
     _name = 'attendance.students'
     _description = 'Checking Attendance'
+    _rec_name="roll_no"
 
     roll_no = fields.Many2one('create.session', string="Roll No", required=True, ondelete='cascade', index=True)
     student_id = fields.Char(string = 'Name')

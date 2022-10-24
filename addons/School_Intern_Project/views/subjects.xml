@@ -73,6 +73,6 @@
         name="Course"
         action="subject_management_action"
         parent="teachers_students_root_menu"
-        sequence="10"/>
+        sequence="7"/>
 
 </odoo>

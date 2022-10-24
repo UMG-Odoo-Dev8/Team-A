@@ -6,10 +6,11 @@ from datetime import datetime, timedelta
 class LeaveStudents(models.Model):
     _name = 'leave.students'
     _description = 'Leave Detail'
+    _rec_name="student_id"
 
-    roll_no = fields.Many2one('create.session', string="Roll_NO", required=True, ondelete='cascade', index=True)
+    roll_no = fields.Many2one('create.session', string="Roll No", required=True, ondelete='cascade', index=True)
     student_id = fields.Char(string = 'Name')
-    sections = fields.Char(string = 'Session Name')
+    sections = fields.Char(string = 'Section Name')
     leave_month = fields.Char()
     leave_type = fields.Selection([('sick', 'Sick Leave'), ('parental', 'Parental Leave'), ('emergency', 'Emergency Leave')], string  = 'Leave Type')
     number_of_days = fields.Float(string = 'Date', store=True)

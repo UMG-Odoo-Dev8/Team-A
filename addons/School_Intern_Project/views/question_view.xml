@@ -19,7 +19,7 @@
                                     <field name="question_text"/>
                                     <field name="answer" />
                                     <field name="score" />
-                                    <field name="q_active" />
+                                    <field name="active" />
                                 </tree>
                                 <form>
                                     <group>
@@ -33,7 +33,7 @@
                                             <field name="score" />
                                         </group>
                                         <group>
-                                            <field name="q_active" />
+                                            <field name="active" />
                                         </group>
                                     </group>
                                 </form>
@@ -60,6 +60,7 @@
         <field name="name">Quizz</field>
         <field name="res_model">question.model</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'active_test':False}</field>
         <!-- <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">

@@ -1,4 +1,5 @@
 from ast import Pass
+from email.policy import default
 import math
 from odoo import models,fields,api
 
@@ -8,17 +9,24 @@ class SchoolExam(models.Model):
     _rec_name = 'stu_name'
    
     
-    # student_id=fields.Many2one('section.line.model', string="Student Name")
-    stu_name=fields.Many2one('calculate.percent', string="Student Name")
-
+    # stu_name=fields.Many2one('calculate.percent', string="Student Name")
+    exam_roll_no = fields.Many2one('calculate.percent', string = 'Roll No')
+    stu_name = fields.Char(string = 'Student Name')
+    sections = fields.Char(string = 'Section')
+    roll_no=fields.Char()
     subject_id = fields.Many2one('question.model', string='Course')
-
+    sections = fields.Char()
     exam_ids = fields.One2many('school.exam.line', 'exam_id', string='Question', store=True)
     # total_mark=fields.Char() #first test
     status=fields.Char()
     # exam_marks=fields.Integer() #second test
     exam_mark=fields.Integer()
-    
+    state=fields.Selection([
+        ('draft','Draf'),
+        ('in_exam','In Examination'),
+        ('done','Done'),
+        ('cancel','Cancel')],default='draft', string="Status", required=True)
+
     @api.onchange('subject_id')
     def onchange_subject_id(self):
         self.exam_ids=[(5,0,0)]
@@ -32,6 +40,18 @@ class SchoolExam(models.Model):
                     'answer': ques.answer
                     }
                     self.update({'exam_ids':[(0, 0, vals)]})
+
+    # @api.onchange('stu_name')
+    # def _onchange_stu_name(self):
+    #     if self.stu_name:
+    #         self.roll_no=self.stu_name.roll_no_id.roll_no
+    #         self.sections= self.stu_name.sections.section_id.sections              
+
+    @api.onchange('exam_roll_no')
+    def _onchange_exam_roll_no(self):
+        if self.exam_roll_no:
+            self.stu_name= self.exam_roll_no.stu_name
+            self.sections= self.exam_roll_no.sections
 
     #Update Total Marks
     # def exam_result(self):
@@ -64,7 +84,7 @@ class SchoolExam(models.Model):
         elif(mark <= 79):
             self.status = 'Pass'
         elif(mark <= 99):
-            self.status = 'Distinction'
+            self.status = 'Pass with Distinction'
         else:
             self.status = 'Perfect'
 
