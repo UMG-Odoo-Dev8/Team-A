@@ -35,7 +35,7 @@ To run this system you need to install our custom module in odoo version 15. By 
 ## Operation
 
 ### Create Courses
-Firstly, go to ***Course*** menu and create new course by clicking create button.When you click it, you will get this kind of interface.
+Firstly, go to ***Course*** menu and create new course by clicking create button.
 ![create courses](./images/course.png)
 
  In this form view, you can add totoal chapters of related course and can define course start-date and end-date.
@@ -82,10 +82,10 @@ Add month name you want to leave. Can choose leave type,can define wanted durati
 
 
 ### View Roll call Percentage
-To See roll call percentage of each student, go to ***Total Percent*** menu.And then, by selecting student's name, can view that student's attendance record and roll call percent.
+To See roll call percentage of each student, go to ***Total Percent*** menu. 
 ![total percent](./images/total_percent.png)
 
-Select student's name and insert the name of month you want to view
+By selecting student's name and by inserting the name of month you want to view ,can see that student's attendance record and roll call percent
 ![total percent](./images/total_pecent_view.png)
 
 ### Create Exam Questions
