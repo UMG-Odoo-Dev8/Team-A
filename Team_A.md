@@ -21,7 +21,7 @@
     - [Test Exam and Generate Result](#test-exam-and-generate-result)
 
 ## Projcet Overview
-School management system is very convient for checking students' roll-call percentage and also useful  for saving attendance records for each student and for testing exams.<br>
+School management system is very convenient for checking students' roll-call percentage and also useful  for saving attendance records for each student and for testing exams.<br>
     Functions of the system:
 - Manage attendance
 - Test Exam
@@ -95,8 +95,8 @@ Go to ***Quizz***  menu and write questions and define correct answers. Can also
 ![quizz](./images/quizz_create.png)
 
 ### Test Exam and Generate Result
-To answer exam questions go to ***Exam*** menu. Choose course name and student whose roll-call precentage is at least 75%.
+To answer exam questions go to ***Exam*** menu. Choose course name and student whose roll-call precentage is at least 80%.
 ![exam](./images/exam.jpg)
 
 After selecting course, you can answer questions. And then, click submit button to see your result.
-![exam](./images/exam_result.jpg)
+![exam](./images/exam_submit.jpg)
