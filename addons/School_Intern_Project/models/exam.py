@@ -22,10 +22,26 @@ class SchoolExam(models.Model):
     # exam_marks=fields.Integer() #second test
     exam_mark=fields.Integer()
     state=fields.Selection([
-        ('draft','Draf'),
-        ('in_exam','In Examination'),
+        ('draft','Draft'),
+        # ('in_examination','In Examination'),
         ('done','Done'),
-        ('cancel','Cancel')],default='draft', string="Status", required=True)
+        ('cancel','Cancel')],default='draft', string="State", required=True)
+
+    # def action_in_examination(self):
+    #     for rec in self:
+    #         rec.state="in_examination"
+    
+    def action_done(self):
+        for rec in self:
+            rec.state="done"        
+
+    def action_cancel(self):
+        for rec in self:
+            rec.state="cancel"
+
+    def action_draft(self):
+        for rec in self:
+            rec.state="draft"
 
     @api.onchange('subject_id')
     def onchange_subject_id(self):
@@ -79,16 +95,14 @@ class SchoolExam(models.Model):
             else:
                 print('Hay! No question. Pls Try again')
         self.exam_mark = mark
-        if(mark <= 39):
-            self.status = 'Fail'
-        elif(mark <= 79):
-            self.status = 'Pass'
-        elif(mark <= 99):
-            self.status = 'Pass with Distinction'
+        if mark>=0 and mark<=39:
+            self.status="Fail"
+        elif mark>=40 and mark<=79:
+            self.status="Pass"
+        elif mark>=80 and mark<=100:
+            self.status="Pass with Distinction"
         else:
-            self.status = 'Perfect'
-
-    
+            self.status="Wrong Cridential!"  
 
 
 class SchoolExamLine(models.Model):

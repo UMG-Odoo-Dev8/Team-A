@@ -7,7 +7,10 @@
         <field name="arch" type="xml">
             <form string="Exam Question">
                 <header>
-                    <!-- <button> -->
+                    <!-- <button name="action_in_examination" string="In Examination" class="oe_highlight" type="object" state="draft"/> -->
+                    <button name="action_done" string="Save" class="oe_highlight" type="object" state="done"/>
+                    <button name="action_cancel" string="Cancel" type="object" state="draft,in_examination"/>
+                    <button name="action_draft" string="Reset to draft" type="object" state="cancel"/>
                     <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}"  statusbar_visible="draft,in_exam,done"/>
                 </header>
                 <sheet>
@@ -65,12 +68,19 @@
         <field name="name">school_exam.view.tree</field>
         <field name="model">school.exam</field>
         <field name="arch" type="xml">
-            <tree string="">
+            <tree decoration-success="status == 'Pass with Distinction'"
+                        decoration-info="status == 'Pass'"
+                        decoration-danger="status == 'Fail'">
                 <field name="stu_name" />
                 <field name="exam_roll_no" />
                 <field name="subject_id" />
                 <field name="exam_mark" />
-                <field name="status" />
+                <field name="status" 
+                       decoration-success="status == 'Pass with Distinction'"
+                       decoration-info="status == 'Pass'"
+                       decoration-danger="status == 'Fail'"
+                       widget="badge" />
+                <field name="state" />
             </tree>
         </field>
     </record>
