@@ -22,15 +22,17 @@
                 <!-- <button string="Hello" name="my_fun" type="object" class="oe_highlight"/> -->
                 <sheet>
                     <group>
-                        <field name="roll_no" required = 'True'/>
+                        <field name="roll_no" required = 'True' options="{'no_create': True, 'no_create_edit':True}"/>
                         <field name="student_id" />
                         <field name="sections" />
-                        <field name="today_month" />
+                        <field name="today_month" readonly="1" force_save="1" invisible = '1'/>
                         <field name="check_in" required = 'True'/>
+                        <!-- <field name="time_check_in" readonly = 'True' force_save = '1'/> -->
                         <field name="check_out" />
+                        <!-- <field name="time_check_out" /> -->
                         <field name="attendance_hours" />
-                        <field name="percentage" />
-                        <field name="total_percent" />
+                        <field name="percentage" string = 'Attendance Day'/>
+                        <field name="total_percent" invisible = '1'/>
                     </group>
                 </sheet>
             </form>
@@ -47,10 +49,12 @@
                 <field name="sections" optional = "show"/>
                 <field name="today_month" optional = "show"/>
                 <field name="check_in" optional = "show"/>
+                <!-- <field name="time_check_in" /> -->
                 <field name="check_out" optional = "show"/>
+                <!-- <field name="time_check_out" /> -->
                 <field name="attendance_hours" optional = "show"/>
-                <field name="percentage" optional = "show"/>
-                <field name="total_percent" optional = "show"/>
+                <field name="percentage" string = 'Attendance Day' optional = "show"/>
+                <field name="total_percent" invisible = '1'/>
 
             </tree>
         </field>

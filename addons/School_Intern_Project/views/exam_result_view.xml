@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record model="ir.ui.view" id="school_exam_form">
+        <field name="name">school.exam.form</field>
+        <field name="model">exam.result</field>
+        <field name="arch" type="xml">
+        <form string="Exam Result">
+            <sheet>
+            <group>
+                <field name="roll_no_id" required="1"/>
+                <field name="stu_name" required="1"/>
+                <field name="total_score" force_save="1" readonly="1"/>
+                <field name="result" force_save="1" readonly="1"/>
+            </group>
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="exam_result_view_tree">
+        <field name="name">exam_result.view.tree</field>
+        <field name="model">exam.result</field>
+        <field name="arch" type="xml">
+        <tree string="">
+            <field name="stu_name" optional="show"/>
+            <field name="total_score" optional="show"/>
+            <field name="result" optional="show"/>
+        </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="exam_result_action">
+        <field name="name">Students Exam Result</field>
+        <field name="res_model">exam.result</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem 
+        id="exam_result_sub_menu" 
+        name="Exam Result" 
+        sequence="10" 
+        parent="exam_and_result_sub_menu"
+        action="exam_result_action"/>
+</odoo>

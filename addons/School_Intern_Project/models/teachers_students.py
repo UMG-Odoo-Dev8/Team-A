@@ -37,7 +37,4 @@ class SchoolInfo(models.Model):
                 total_age=str(int((today_date-date_of_birth).days/365))
                 rec.age=total_age
             else:
-                rec.age="Enter Your Date of Birth!"
-
-    # def my_fun(self):
-    #     self.state = 'teacher'
+                rec.age="0"

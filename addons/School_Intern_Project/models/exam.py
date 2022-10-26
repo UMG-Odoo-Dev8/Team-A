@@ -10,10 +10,9 @@ class SchoolExam(models.Model):
    
     
     # stu_name=fields.Many2one('calculate.percent', string="Student Name")
-    exam_roll_no = fields.Many2one('calculate.percent', string = 'Roll No')
+    roll_no = fields.Many2one('calculate.percent', string = 'Roll No')
     stu_name = fields.Char(string = 'Student Name')
     sections = fields.Char(string = 'Section')
-    roll_no=fields.Char()
     subject_id = fields.Many2one('question.model', string='Course')
     sections = fields.Char()
     exam_ids = fields.One2many('school.exam.line', 'exam_id', string='Question', store=True)
@@ -21,11 +20,11 @@ class SchoolExam(models.Model):
     status=fields.Char()
     # exam_marks=fields.Integer() #second test
     exam_mark=fields.Integer()
-    state=fields.Selection([
-        ('draft','Draft'),
-        # ('in_examination','In Examination'),
-        ('done','Done'),
-        ('cancel','Cancel')],default='draft', string="State", required=True)
+    # state=fields.Selection([
+    #     ('draft','Draft'),
+    #     # ('in_examination','In Examination'),
+    #     ('done','Done'),
+    #     ('cancel','Cancel')],default='draft', string="State", required=True)
 
     # def action_in_examination(self):
     #     for rec in self:
@@ -45,17 +44,18 @@ class SchoolExam(models.Model):
 
     @api.onchange('subject_id')
     def onchange_subject_id(self):
-        self.exam_ids=[(5,0,0)]
-        questions = self.env['question.model.line'].search([])
-        if questions:
-            for ques in questions:
-                if self.subject_id.subject==ques.question_id.subject:
-                    vals = {
-                    'question_text': ques.question_text,
-                    'score': ques.score,
-                    'answer': ques.answer
-                    }
-                    self.update({'exam_ids':[(0, 0, vals)]})
+        if self.subject_id:
+            self.exam_ids=[(5,0,0)]
+            questions = self.env['question.model.line'].search([])
+            if questions:
+                for ques in questions:
+                    if self.subject_id.subject==ques.question_id.subject:
+                        vals = {
+                        'question_text': ques.question_text,
+                        'score': ques.score,
+                        'answer': ques.answer
+                        }
+                        self.update({'exam_ids':[(0, 0, vals)]})
 
     # @api.onchange('stu_name')
     # def _onchange_stu_name(self):
@@ -63,11 +63,11 @@ class SchoolExam(models.Model):
     #         self.roll_no=self.stu_name.roll_no_id.roll_no
     #         self.sections= self.stu_name.sections.section_id.sections              
 
-    @api.onchange('exam_roll_no')
-    def _onchange_exam_roll_no(self):
-        if self.exam_roll_no:
-            self.stu_name= self.exam_roll_no.stu_name
-            self.sections= self.exam_roll_no.sections
+    @api.onchange('roll_no')
+    def _onchange_roll_no(self):
+        if self.roll_no:
+            self.stu_name= self.roll_no.stu_name
+            self.sections= self.roll_no.sections
 
     #Update Total Marks
     # def exam_result(self):

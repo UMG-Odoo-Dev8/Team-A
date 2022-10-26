@@ -21,14 +21,14 @@
             <form string="">
                 <sheet>
                     <group>
-                        <field name="roll_no_id" />
+                        <field name="roll_no_id" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
                         <field name="stu_name" />
                         <field name="sections" />
-                        <field name="check_month" />
-                        <field name="full_day" />
-                        <field name="half_day" />
-                        <field name="leave" />
-                        <field name="attendance_count" />
+                        <field name="check_month" string = 'Month' placeholder = 'Enter Month' required="1"/>
+                        <field name="full_day" readonly="1"/>
+                        <field name="half_day" readonly="1"/>
+                        <field name="leave" readonly="1"/>
+                        <field name="attendance_count" string="Attendance Days"/>
                         <field name="total_percent" />
                         <field name="status" readonly = '1' force_save='1'/>
                     </group>

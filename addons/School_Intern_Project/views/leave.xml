@@ -10,10 +10,10 @@
                     <group name="col_left">
                         <div>
                             <field name="student_id" readonly='1' force_save='1'/>
-                            <field name="roll_no" />
+                            <field name="roll_no" placeholder = 'Please select student roll number'/>
                             <field name="sections" readonly='1' force_save='1'/>
-                            <field name="leave_month" />
-                            <field name="leave_type" />
+                            <field name="leave_month" readonly="1" force_save="1" invisible = '1'/>
+                            <field name="leave_type" placeholder = 'Please select leave types'/>
                             <div class="o_row o_row_readonly">
                                 <span class="oe_inline">
                                     From
@@ -27,8 +27,7 @@
                                     widget="daterange" options="{'related_start_date': 'request_date_from'}"/>
                             </div>
                             <field name="number_of_days" readonly='1' force_save='1'/>
-                            <field name="reason" string = 'Reason'/>
-                            <field name="percentage" readonly='1' force_save='1'/>
+                            <field name="reason" string = 'Reason' placeholder = 'Please fill reason for leave'/>
                         </div>
                     </group>
                 </sheet>
@@ -49,7 +48,6 @@
                 <field name="request_date_to" optional = 'show'/>
                 <field name="number_of_days" optional = 'show'/>
                 <field name="reason" optional = 'show'/>
-                <field name="percentage" optional = 'show'/>
             </tree>
         </field>
     </record>

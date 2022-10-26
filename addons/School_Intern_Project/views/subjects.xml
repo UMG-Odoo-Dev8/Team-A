@@ -8,10 +8,10 @@
             <form string="">
                 <sheet>
                     <group>
-                        <field name="subjects" string = 'Course' />
-                        <field name="chapter" string="Content"/>
-                        <field name="start_date" string="Start Date" />
-                        <field name="end_date" string="End Date"/>
+                        <field name="subjects" string = 'Course' required = '1'/>
+                        <field name="chapter" string="Content" required = '1'/>
+                        <field name="start_date" string="Start Date" required = '1'/>
+                        <field name="end_date" string="End Date" required = '1'/>
                     </group>
                 </sheet>
             </form>

@@ -20,6 +20,36 @@ class Attendance(models.Model):
     total_percent = fields.Float(compute = '_compute_total_percent')
     sections = fields.Char()
 
+    # time_check_in = fields.Char()
+    # time_check_out = fields.Char()
+    
+    @api.onchange('check_in')
+    def _onchange_check_in_month(self):
+        if self.check_in:
+            check_month = self.check_in
+            self.today_month = check_month.month
+        else:
+            self.today_month = 'No Month'
+
+    # @api.onchange('check_in')
+    # def _onchange_check_in(self):
+    #     datetime_str = '9:00:00'
+    #     datetime_object = datetime.strptime(datetime_str, '%H:%M:%S')
+    #     if self.check_in > datetime_object:
+    #         self.time_check_in = 'Late Attendance'
+    #     else:
+    #         self.time_check_in = 'Good Attendance'
+        
+
+    # @api.onchange('check_out')
+    # def _onchange_check_out(self):
+    #     datetime_str = '16:00:00'
+    #     datetime_object = datetime.strptime(datetime_str, '%H:%M:%S')
+    #     if self.check_out > datetime_object:
+    #         self.time_check_out = 'Nice Check Out'
+    #     else:
+    #         self.time_check_out = 'Early Check Out'
+
     @api.onchange('roll_no')
     def _onchange_roll_no(self):
         if self.roll_no:
@@ -32,7 +62,9 @@ class Attendance(models.Model):
             if not attendance.check_out:
                 attendance.percentage = 0.5
             else:
-                if attendance.attendance_hours <= 3:
+                if attendance.attendance_hours <= 1:
+                    attendance.percentage = 0
+                elif attendance.attendance_hours <= 3:
                     attendance.percentage = 0.5
                 else:
                     attendance.percentage = 1.0
@@ -66,6 +98,3 @@ class Attendance(models.Model):
             else:
                 print('Hello')
         self.total_percent = total_per
-
-    # def my_fun(self):
-    #     pass
