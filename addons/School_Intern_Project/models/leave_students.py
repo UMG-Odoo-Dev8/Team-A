@@ -1,5 +1,6 @@
+from re import L
 import string
-from odoo import api, fields, models
+from odoo import api, fields, models,_,exceptions
 from datetime import datetime, timedelta
 from ast import IsNot
 
@@ -44,4 +45,35 @@ class LeaveStudents(models.Model):
                     d3 = d2-d1
                     leave.number_of_days = int(str(d3.days)) + 1.0
                 else:
-                    leave.number_of_days = 0.5
+                    # leave.number_of_days = 0.5
+                    leave_date = datetime.strptime(str(leave.request_date_from), '%Y-%m-%d')
+                    leave_dates = str(leave_date.date())
+                    print('leave date', leave_dates)
+                    print(type(leave_dates))
+                    checks=self.env['attendance.students'].search(['&',('student_id','=',self.student_id),('check_in_date', '=', leave_dates)])
+                    print(checks)
+                    if checks:
+                        if checks.attendance_hours <= 3:
+                            leave.number_of_days = 0.5
+                        else:
+                            leave.number_of_days = 0
+                    else:
+                        leave.number_of_days = 1
+                    # for check in checks:
+                    #     check_date = check.check_in.date()
+                    #     leave_date = leave.request_date_from
+                    #     if check_date==leave_date:
+                    #         print('hi'*100)
+                    #         if check.check_in and check.check_out:
+                    #             if check.attendance_hours <= 3:
+                    #                 leave.number_of_days =0.5
+                    #             else:
+                    #                 leave.number_of_days=0
+                            
+                    
+    @api.constrains('number_of_days')
+    def _check_validity_leave(self):
+        """ verifies if check_in is earlier than check_out. """
+        for leave in self:
+            if  leave.number_of_days==0:
+                raise exceptions.ValidationError(_('No take Leave. This Date is Full Day Attendance Day!'))

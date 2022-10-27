@@ -24,7 +24,7 @@
         <field name="name">attendance_students.view.form</field>
         <field name="model">attendance.students</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Attendance List">
                 <!-- <button string="Hello" name="my_fun" type="object" class="oe_highlight"/> -->
                 <sheet>
                     <group>
@@ -33,10 +33,11 @@
                         <field name="sections" />
                         <field name="today_month" readonly="1" force_save="1" invisible = '1'/>
                         <field name="check_in" required = 'True'/>
+                        <field name="check_in_date" required = 'True' invisible = '1'/>
                         <!-- <field name="time_check_in" readonly = 'True' force_save = '1'/> -->
                         <field name="check_out" />
                         <!-- <field name="time_check_out" /> -->
-                        <field name="attendance_hours" />
+                        <field name="attendance_hours" invisible = '1'/>
                         <field name="percentage" string = 'Attendance Day'/>
                         <field name="total_percent" invisible = '1'/>
                     </group>

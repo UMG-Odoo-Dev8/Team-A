@@ -32,7 +32,16 @@ class CalculatePercent(models.Model):
             name = self.roll_no_id.student_id.name
             self.full_day = self.env['attendance.students'].search_count(['&', '&', ('student_id', '=', name), ('today_month', '=', month), ('percentage', '=', 1.0)])
             self.half_day = self.env['attendance.students'].search_count(['&', '&', ('student_id', '=', name), ('today_month', '=', month), ('percentage', '=', 0.5)])
-            self.leave = self.env['leave.students'].search_count(['&', ('student_id', '=', name), ('leave_month', '=', month)])
+            check_leaves = self.env['leave.students'].search(['&', ('student_id', '=', name), ('leave_month', '=', month)])
+            days=0
+            for check_leave in check_leaves:
+                if check_leave.number_of_days:
+                    days+=check_leave.number_of_days
+            if days<5:
+                self.leave=days 
+            else:
+                self.leave=4  
+                
     @api.depends("full_day", "half_day")
     def _compute_total(self):
         for record in self:
@@ -43,8 +52,8 @@ class CalculatePercent(models.Model):
         for record in self:
             percent = (record.attendance_count /30) * 100
             if percent <= 79.0:
-                if record.leave >=1:
-                    record.attendance_count += 4.0
+                if record.leave >0:
+                    record.attendance_count += record.leave
                     record.total_percent =  (record.attendance_count /30) * 100
                 else:
                     record.total_percent = percent

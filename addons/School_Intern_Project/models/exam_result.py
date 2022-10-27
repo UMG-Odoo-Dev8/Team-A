@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class ExamResult(models.Model):
     _name = 'exam.result'
     _description = 'Exam Result'
-    # _inherit = 'school.exam'
+    _rec_name="stu_name"
 
     # roll_no=fields.Many2one('school.exam', string="Roll No")
     roll_no_id=fields.Many2one('calculate.percent', string="Roll No", ondelete='cascade')
@@ -16,18 +16,15 @@ class ExamResult(models.Model):
     @api.onchange('roll_no_id')
     def _onchange_roll_no_id(self):
         if self.roll_no_id:
-            # self.stu_name = self.roll_no.stu_name.student_id.name
             self.stu_name = self.roll_no_id.roll_no_id.student_id.name
 
     @api.onchange('stu_name')
     def onchange_stu_name(self):
         print("*"*100)
         if self.stu_name:
-            # print("[+] "*100)
-            # print('///////////////' ,self.stu_name.name)
             school_exam_ids = self.env['school.exam'].search([('roll_no.stu_name', '=', self.stu_name)])
-            print('/////////hello', school_exam_ids)
-            print(school_exam_ids)
+            # print('/////////hello', school_exam_ids)
+            # print(school_exam_ids)
             mark = 0
             chceck_status_fail = False
             check_status_pass = False

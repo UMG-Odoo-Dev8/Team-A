@@ -14,6 +14,7 @@ class Attendance(models.Model):
     student_id = fields.Char(string = 'Name')
     today_month = fields.Char()
     check_in = fields.Datetime(string="Check In", default=fields.Datetime.now, required=True)
+    check_in_date = fields.Char()
     check_out = fields.Datetime(string="Check Out", default=fields.Datetime.now)
     attendance_hours = fields.Float(string='Attendance Hours', compute='_compute_attendance_hours', store=True, readonly=True)
     percentage = fields.Float(string = 'Percent', compute = '_check_attendance_per_day', store=True, readonly=True)
@@ -22,6 +23,10 @@ class Attendance(models.Model):
 
     # time_check_in = fields.Char()
     # time_check_out = fields.Char()
+
+    @api.onchange('check_in')
+    def _onchange_check_in(self):
+        self.check_in_date = str(self.check_in.date())
     
     @api.onchange('check_in')
     def _onchange_check_in_month(self):

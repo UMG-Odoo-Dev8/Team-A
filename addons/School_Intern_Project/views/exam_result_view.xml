@@ -9,7 +9,7 @@
         <form string="Exam Result">
             <sheet>
             <group>
-                <field name="roll_no_id" required="1"/>
+                <field name="roll_no_id" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
                 <field name="stu_name" required="1"/>
                 <field name="total_score" force_save="1" readonly="1"/>
                 <field name="result" force_save="1" readonly="1"/>
@@ -32,14 +32,25 @@
         </field>
     </record>
 
+    <record id="exam_result_view_graph" model="ir.ui.view">
+        <field name="name">exam.result.view.graph</field>
+        <field name="model">exam.result</field>
+        <field name="arch" type="xml">
+                <graph string="" type="line"> 
+                    <field name="stu_name" optional="show"/>
+                    <field name="total_score" optional="show"/>
+                    <field name="result" optional="show"/>
+                </graph>
+        </field>
+    </record>
 
     <record model="ir.actions.act_window" id="exam_result_action">
         <field name="name">Students Exam Result</field>
         <field name="res_model">exam.result</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph</field>
     </record>
 
-
+     
     <menuitem 
         id="exam_result_sub_menu" 
         name="Exam Result" 
