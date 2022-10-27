@@ -8,11 +8,17 @@
     </record>
 
     <menuitem
-        id="attendance_sub_menu"
-        name="Attendance"
-        action="attendance_students_action"
+        id="attendance_menu"
+        name="Attendances"
         parent="teachers_students_root_menu"
-        sequence="10"/>
+        sequence="8"/>
+
+    <menuitem
+        id="attendance_sub_menu"
+        name="Daily Attendance"
+        action="attendance_students_action"
+        parent="attendance_menu"
+        sequence="8"/>
 
     <record id="attendance_students_view_form" model="ir.ui.view">
         <field name="name">attendance_students.view.form</field>

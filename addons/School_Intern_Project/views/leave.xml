@@ -63,8 +63,8 @@
         id="leave_sub_menu"
         name="Leave"
         action="leave_students_action"
-        parent="teachers_students_root_menu"
-        sequence="10"/>
+        parent="attendance_menu"
+        sequence="8"/>    
 
     
 </odoo>

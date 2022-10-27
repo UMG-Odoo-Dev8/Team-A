@@ -17,15 +17,15 @@ class ExamResult(models.Model):
     def _onchange_roll_no_id(self):
         if self.roll_no_id:
             # self.stu_name = self.roll_no.stu_name.student_id.name
-            self.stu_name = self.roll_no_id.stu_name.student_id.name
+            self.stu_name = self.roll_no_id.roll_no_id.student_id.name
 
     @api.onchange('stu_name')
     def onchange_stu_name(self):
         print("*"*100)
         if self.stu_name:
-            print("[+] "*100)
-            print('///////////////' ,self.stu_name.name)
-            school_exam_ids = self.env['school.exam'].search([('roll_no.stu_name.student_id.name', '=', self.stu_name)])
+            # print("[+] "*100)
+            # print('///////////////' ,self.stu_name.name)
+            school_exam_ids = self.env['school.exam'].search([('roll_no.stu_name', '=', self.stu_name)])
             print('/////////hello', school_exam_ids)
             print(school_exam_ids)
             mark = 0
@@ -49,7 +49,7 @@ class ExamResult(models.Model):
                 self.result = 'Exam Fail'
             elif check_status_distinction and check_status_pass:
                 if check_status_distinction:
-                    self.result =  check_status_distinction ('Distinction Exam Pass')
+                    self.result =  check_status_distinction, ('Distinction Exam Pass')
                 else:
                     self.result = 'Exam Pass'
             else:

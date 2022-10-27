@@ -13,7 +13,7 @@
                             <field name="roll_no" domain = "[('status', '=', 'Pass')]" required = '1' options="{'no_create': True, 'no_create_edit':True}"/>
                         </group>
                         <group>
-                            <field name="stu_name"/>  
+                            <field name="stu_name" required = '1'/>  
                             <field name="sections" string="Section" />
                         </group>
                     </group>
@@ -75,7 +75,7 @@
                        decoration-info="status == 'Pass'"
                        decoration-danger="status == 'Fail'"
                        widget="badge" />
-                <field name="state" />
+                <!-- <field name="state" /> -->
             </tree>
         </field>
     </record>

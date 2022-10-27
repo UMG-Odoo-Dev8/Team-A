@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="calculate_percent_action" model="ir.actions.act_window">
-        <field name="name">Percentage</field>
-        <field name="res_model">calculate.percent</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-        id="calculate_percent_sub_menu"
-        name="Total Percent"
-        action="calculate_percent_action"
-        parent="teachers_students_root_menu"
-        sequence="10"/>
-
     <record id="calculate_percent_view_form" model="ir.ui.view">
         <field name="name">calculate_percent.view.form</field>
         <field name="model">calculate.percent</field>
@@ -55,5 +42,18 @@
             </tree>
         </field>
     </record>
+
+    <record id="calculate_percent_action" model="ir.actions.act_window">
+        <field name="name">Percentage</field>
+        <field name="res_model">calculate.percent</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="calculate_percent_sub_menu"
+        name="Total Percent"
+        action="calculate_percent_action"
+        parent="attendance_menu"
+        sequence="10"/>    
 
 </odoo>
