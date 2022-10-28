@@ -93,11 +93,11 @@ Go to Examination > Quizz menu, write questions and define correct answers. Can 
 ### Test Exam and Generate Result
 To answer exam questions go to Examination > Exam menu. Choose course name and student whose roll-call precentage is at least 80%.
 ![exam](./images/create_exam.png)
-![exam](./images/exam_submit.jpg)
 
 After selecting course, you can answer questions. And then, click submit button to see your result.
-![exam](./images/exam_submit.jpg)
+![exam](./images/create_new_exam.png)
 
 ### Total Exam Result
 To  view the total marks of all courses that student answered, go to Examination > Exam Result.
 ![exam result](./images/create_exam_result.png)
+![exam result](./images/create_new_exam_result.png)
