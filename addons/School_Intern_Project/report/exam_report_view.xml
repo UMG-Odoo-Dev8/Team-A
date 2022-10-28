@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="exam_report" model="ir.actions.report">
+        <field name="name">Exam Report Card</field>
+        <field name="model">school.exam</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">School_Intern_Project.report_exam</field>
+        <field name="report_file">School_Intern_Project.report_exam</field>
+        <!-- <field name="print_report_name">'%s' % object.name</field> -->
+        <field name="binding_model_id" ref="model_school_exam"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- <template id="report_exam">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+        <div>
+            <style>
+            table,td,th,tr{
+                border: 1pt solid grey;
+                border-radius:1pt;
+            }
+            
+            </style>
+        <center>
+        <h2>Student Exam Report</h2>
+        </center>
+        <div class="page">
+        
+        
+            <br><table style="width:100%">
+                <tr style="height:50px">
+                    <th ><center>Roll No</center></th>
+                    <th ><center>Name</center></th>
+                    <th ><center>Section Name</center></th>
+                    <th ><center>Course</center></th>
+                    <th ><center>Exam Mark</center></th>
+                    <th ><center>Status</center></th>
+                </tr>
+                <tr>
+                    <td><span t-field="o.roll_no"></span></td>
+                    <td><span t-field="o.stu_name"></span></td>
+                    <td><span t-field="o.sections"></span></td>
+                    <td><span t-field="o.subject_id"></span></td>
+                    <td><span t-field="o.exam_mark"></span></td>
+                    <td><span t-field="o.status"></span></td>
+                </tr>
+        
+            </table></br>
+        
+
+        <br><br><a href="http://wkhtmltopdf.org/" target="_blank"></a></br></br>
+        </div>
+        </div>
+
+        </t>
+    </t>
+    </template> -->
+
+
+    <template id="report_exam">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <center>
+                <h2 style="background-color:Skyblue; color:white; text-shadow: 2px 2px 4px #000000;">Exam Result for each Subject</h2>
+            </center>
+            <t t-call="web.external_layout">
+                <div class="page" >
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <style>
+                                table, td, th {
+                                    border: 1px solid black;
+                                    margin: 50px 50px 50px 100px;
+                                    width: 500px;
+                                    height:50px;
+                                    padding-left: 20px;
+                                }
+                                p{
+                                    margin-left:100px;
+                                }
+                                
+                                /* border spacing is used to specify the
+                                width between border and adjacent cells */
+                                #separateTable {
+                                    border-collapse: separate;
+                                    border-spacing: 2px;
+                                }
+                                #collapseTable {
+                                    border-collapse: collapse;
+                                    border-spacing: 2px;
+                                }
+                                #initialTable {
+                                    border-collapse: initial;
+                                }
+                                strong{
+                                    <!-- text-shadow: 2px 2px 4px #0000CD; -->
+                                    color: #0000CD;
+                                }
+                            </style>
+                            <table id = "collapseTable">
+                                <tr>
+                                    <th colspan="2" class="text-center">Student's Exam Result</th>
+                                </tr>
+                                <tr>
+                                    <th>Roll No </th>
+                                    <td><span t-field="o.roll_no"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Name </th>
+                                    <td><span t-field="o.stu_name"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Course </th>
+                                    <td><span t-field="o.subject_id"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Section </th>
+                                    <td><span t-field="o.sections"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Exam Mark </th>
+                                    <td><span t-field="o.exam_mark"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Status </th>
+                                    <td><span t-field="o.status"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+</odoo>
+
+
+
+

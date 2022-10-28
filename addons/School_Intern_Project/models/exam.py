@@ -30,17 +30,17 @@ class SchoolExam(models.Model):
     #     for rec in self:
     #         rec.state="in_examination"
     
-    def action_done(self):
-        for rec in self:
-            rec.state="done"        
+    # def action_done(self):
+    #     for rec in self:
+    #         rec.state="done"        
 
-    def action_cancel(self):
-        for rec in self:
-            rec.state="cancel"
+    # def action_cancel(self):
+    #     for rec in self:
+    #         rec.state="cancel"
 
-    def action_draft(self):
-        for rec in self:
-            rec.state="draft"
+    # def action_draft(self):
+    #     for rec in self:
+    #         rec.state="draft"
 
     @api.onchange('subject_id')
     def onchange_subject_id(self):

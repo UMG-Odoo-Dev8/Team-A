@@ -10,13 +10,19 @@ class ExamResult(models.Model):
     # roll_no=fields.Many2one('school.exam', string="Roll No")
     roll_no_id=fields.Many2one('calculate.percent', string="Roll No", ondelete='cascade')
     stu_name = fields.Char()
-    total_score = fields.Integer(string = 'Total')
+    sections=fields.Char()
+    total_score = fields.Integer(string = 'Total Marks')
     result = fields.Char(string = 'Status')
+
+    # result_ids=fields.Many2one('exam.result.line', 'result_id')
+
 
     @api.onchange('roll_no_id')
     def _onchange_roll_no_id(self):
         if self.roll_no_id:
             self.stu_name = self.roll_no_id.roll_no_id.student_id.name
+            self.sections= self.roll_no_id.roll_no_id.session_id.session_name
+            
 
     @api.onchange('stu_name')
     def onchange_stu_name(self):
@@ -53,5 +59,23 @@ class ExamResult(models.Model):
                 self.result = 'No result'
 
             self.total_score = mark
+
+# class ExamResultLine(models.Model):
+#     _name = 'exam.result.line'
+#     _description = 'Exam Result Line'
+#     # _rec_name="stu_name"
+
+#     result_id=fields.Many2one('exam.result')
+
+#     subject_name=fields.Many2one('school.exam', "Subject")
+#     status=fields.Char()
+#     marks=fields.Integer()
+
+#     @api.onchange('subject_name')
+#     def _onchange_subject_name(self):
+#         if self.subject_name:
+#             self.marks=self.subject_name.exam_mark
+#             self.status=self.subject_name.status
+
 
            

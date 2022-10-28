@@ -11,9 +11,22 @@
             <group>
                 <field name="roll_no_id" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
                 <field name="stu_name" required="1"/>
+                <field name="sections" required="1" />
                 <field name="total_score" force_save="1" readonly="1"/>
                 <field name="result" force_save="1" readonly="1"/>
             </group>
+            <!-- <notebook>
+                <page name="Total Exam Result" string="Total Exam Result">
+                    <field name="result_ids" >
+                        <tree string='Exam Result for each subject' editable="bottom">
+                            <field name="result_id" invisible = '1' />
+                            <field name="subject_name" />
+                            <field name="marks" />
+                            <field name="status" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook> -->
             </sheet>
         </form>
         </field>

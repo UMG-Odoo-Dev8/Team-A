@@ -13,6 +13,7 @@
         'views/exam_view.xml',
         'views/question_view.xml',
         'views/exam_result_view.xml',
-        'report/report_view.xml'
+        'report/exam_report_view.xml',
+        'report/total_exam_report_view.xml',
     ]
 }

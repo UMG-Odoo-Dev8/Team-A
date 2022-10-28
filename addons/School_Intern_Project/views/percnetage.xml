@@ -12,11 +12,11 @@
                         <field name="stu_name" />
                         <field name="sections" />
                         <field name="check_month" string = 'Month' placeholder = 'Enter Month' required="1"/>
-                        <field name="full_day" readonly="1"/>
-                        <field name="half_day" readonly="1"/>
-                        <field name="leave" readonly="1"/>
-                        <field name="attendance_count" string="Attendance Days"/>
-                        <field name="total_percent" />
+                        <field name="full_day" readonly="1" force_save='1'/>
+                        <field name="half_day" readonly="1" force_save='1'/>
+                        <field name="leave" readonly="1" force_save='1'/>
+                        <field name="attendance_count" string="Attendance Days" readonly = '1' force_save='1'/>
+                        <field name="total_percent" readonly = '1' force_save='1'/>
                         <field name="status" readonly = '1' force_save='1'/>
                     </group>
                 </sheet>
