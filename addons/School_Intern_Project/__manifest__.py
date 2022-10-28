@@ -13,5 +13,6 @@
         'views/exam_view.xml',
         'views/question_view.xml',
         'views/exam_result_view.xml',
+        'report/report_view.xml'
     ]
 }
