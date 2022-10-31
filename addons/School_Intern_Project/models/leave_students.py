@@ -20,6 +20,7 @@ class LeaveStudents(models.Model):
     request_date_from = fields.Date('Request Start Date')
     request_date_to = fields.Date('Request End Date')
     reason = fields.Text(required = True)
+    leave_select=fields.Selection([('hl','Half Leave'),('fl','Full Leave')])
 
     @api.onchange('request_date_from')
     def _onchange_request_date_from_month(self):
@@ -52,23 +53,24 @@ class LeaveStudents(models.Model):
                     print(type(leave_dates))
                     checks=self.env['attendance.students'].search(['&',('student_id','=',self.student_id),('check_in_date', '=', leave_dates)])
                     print(checks)
-                    if checks:
+                    print(type(self.leave_select))
+                    if self.leave_select=="fl":
+                        leave.number_of_days = 1
+                    else:
                         if checks.attendance_hours <= 3:
                             leave.number_of_days = 0.5
                         else:
-                            leave.number_of_days = 0
-                    else:
-                        leave.number_of_days = 1
-                    # for check in checks:
-                    #     check_date = check.check_in.date()
-                    #     leave_date = leave.request_date_from
-                    #     if check_date==leave_date:
-                    #         print('hi'*100)
-                    #         if check.check_in and check.check_out:
-                    #             if check.attendance_hours <= 3:
-                    #                 leave.number_of_days =0.5
-                    #             else:
-                    #                 leave.number_of_days=0
+                            leave.number_of_days = 0    
+                    for check in checks:
+                        check_date = check.check_in.date()
+                        leave_date = leave.request_date_from
+                        if check_date==leave_date:
+                            print('hi'*100)
+                            if check.check_in and check.check_out:
+                                if check.attendance_hours <= 3:
+                                    leave.number_of_days =0.5
+                                else:
+                                    leave.number_of_days=0
                             
                     
     @api.constrains('number_of_days')

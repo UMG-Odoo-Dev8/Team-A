@@ -13,6 +13,7 @@
                             <field name="roll_no" placeholder = 'Please select student roll number'/>
                             <field name="sections" readonly='1' force_save='1'/>
                             <field name="leave_month" readonly="1" force_save="1" invisible = '1'/>
+                            <field name="leave_select" placeholder='Please select full leave or half leave'/>
                             <field name="leave_type" placeholder = 'Please select leave types'/>
                             <div class="o_row o_row_readonly">
                                 <span class="oe_inline">
@@ -44,6 +45,7 @@
                 <field name="roll_no" optional = 'show'/>
                 <field name="sections" optional = 'show'/>
                 <field name="leave_month" optional = 'show'/>
+                <field name="leave_select"/>
                 <field name="request_date_from" optional = 'show'/>
                 <field name="request_date_to" optional = 'show'/>
                 <field name="number_of_days" optional = 'show'/>
